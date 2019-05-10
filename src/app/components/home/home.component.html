@@ -1,0 +1,61 @@
+<div style="text-align:left" width='100%'>
+  <table>
+    <thead class="thead-dark" style="width:100%">
+      <tr style="width:100%">
+        File Import
+      </tr>
+    </thead><br>
+    <tbody style="width:100%">
+      <tr>Please import a file</tr>
+      <br>
+      <tr style="width:100%">
+        <td>
+          <label>
+            <input id="fileInput" type="file" (change)="selectFile($event)">
+          </label>
+        </td>
+      </tr>
+      <tr style="text-align:right">
+        <td>
+          <button class='btn btn-primary' (click)="upload()" [disabled]="!selectedFile"> Upload Me</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+</div>
+<div *ngIf=uploadedFile>
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name  </th>
+      <td mat-cell *matCellDef="let row"> {{row.first_name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="sur_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sur Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.sur_name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="issue_count">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header 
+      matSortActive="name" matSortDirection="asc" matSortDisableClear
+      >Issue Count </th>
+      <td mat-cell *matCellDef="let row"> {{row.issue_count}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="date_of_birth">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Date of Birth </th>
+      <td mat-cell *matCellDef="let row"> {{row.date_of_birth}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </mat-table>
+</div>

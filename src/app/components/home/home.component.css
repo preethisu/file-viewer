@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  .paddingBetweenCols td>th
+{
+    padding:0 15px 0 15px;
+}
